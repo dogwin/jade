@@ -7,7 +7,9 @@
 // use wp_list_pages to display parent and all child pages all generations (a tree with parent)
 $parent = 57;
 $args=array(
-		'child_of' => $parent
+		'child_of' => $parent,
+		'sort_column'=>'menu_order'
+		
 );
 $pages = get_pages($args);
 if ($pages) {
@@ -17,7 +19,8 @@ if ($pages) {
 	}
 
 	$args=array(
-			'title_li' => 'Tree of Parent Page ' . $parent,
+			//'title_li' => 'Tree of Parent Page ' . $parent,
+			'title_li' =>'',
 			'include' =>  $parent . ',' . implode(",", $pageids)
 	);
 	wp_list_pages($args);
